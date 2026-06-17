@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<a href="#services" style="position:absolute;top:-999px;left:-999px;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;padding:4px 8px;background:#D81F26;color:#fff;font-family:sans-serif;font-size:14px;z-index:9999;border-radius:4px;" onfocus="this.style.top='8px';this.style.left='8px';this.style.width='auto';this.style.height='auto';this.style.clip='auto';this.style.overflow='visible';" onblur="this.style.top='-999px';this.style.left='-999px';this.style.width='1px';this.style.height='1px';this.style.clip='rect(0,0,0,0)';this.style.overflow='hidden';">Skip to main content</a>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bevan&amp;family=Barlow:wght@400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #24262B; overflow-x: hidden; }
+  ::selection { background: #D81F26; color: #F5F2EC; }
+  @keyframes tlBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  /* ── Services grid: desktop split → mobile stack ── */
+  .svc-col-hair {
+    padding-right: clamp(0px,4vw,60px);
+    border-right: 1px solid rgba(236,234,227,.13);
+  }
+  .svc-col-right {
+    padding-left: clamp(0px,4vw,60px);
+  }
+  @media (max-width: 879px) {
+    .svc-col-hair {
+      border-right: none;
+      border-bottom: 1px solid rgba(236,234,227,.13);
+      padding-right: 0 !important;
+      padding-bottom: clamp(28px,4vh,44px);
+    }
+    .svc-col-right {
+      padding-left: 0 !important;
+      padding-top: clamp(28px,4vh,44px);
+    }
+  }
+  /* ── Nav: prevent overflow on very small screens ── */
+  [data-nav] { flex-wrap: nowrap; }
+  @media (max-width: 400px) {
+    [data-nav] a[data-wa] span[aria-hidden] { display: none; }
+  }
+  /* ── Footer brand: wrap gracefully ── */
+  @media (max-width: 600px) {
+    .footer-brand { flex-direction: column; align-items: flex-start !important; gap: 10px !important; }
+    .footer-links { flex-direction: column; gap: 14px !important; }
+  }
+  /* ── Testimonial: tighter on mobile ── */
+  @media (max-width: 600px) {
+    blockquote[data-reveal] { font-size: clamp(1.5rem,7vw,2.2rem) !important; }
+  }
+</style>
+</helmet>
+<div ref="{{ setRoot }}" id="top" style="--paper:#24262B; --ink:#ECEAE3; --accent:#D81F26; --muted:#9A968E; background:#24262B; color:#ECEAE3; font-family:'Barlow',-apple-system,BlinkMacSystemFont,sans-serif; position:relative; overflow-x:hidden; min-height:100vh;">
+
+  <nav data-nav="" style="position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(18px,6vw,120px); border-bottom:1px solid transparent; transition:background .35s ease, border-color .35s ease;">
+    <a href="#top" style="display:inline-flex; align-items:center; gap:11px; text-decoration:none; color:var(--ink); line-height:1;"><img src="./logo.png" alt="Ted's Lounge" style="width:34px; height:34px; border-radius:50%; object-fit:cover; flex:0 0 auto;"><span style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(18px,2.4vw,23px); letter-spacing:.01em;">Ted's Lounge</span></a>
+    <a data-wa="" href="https://wa.me/971522175637?text=Hi%20Ted's%20Lounge%2C%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--paper); padding:10px 18px; border-radius:100px; font-family:'Barlow',sans-serif; font-weight:600; font-size:13px; letter-spacing:.01em; text-decoration:none; white-space:nowrap; transition:background .3s ease;" style-hover="background:var(--accent);">
+      <span aria-hidden="true" style="width:7px; height:7px; border-radius:50%; background:#4FCE6B; display:inline-block;"></span>Book
+    </a>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <section style="min-height:100vh; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(92px,13vh,150px) clamp(18px,6vw,120px) clamp(26px,5vh,56px); position:relative;">
+    <div style="display:flex; justify-content:space-between; font-family:'Space Mono',monospace; font-size:clamp(10px,1.1vw,12px); letter-spacing:.2em; text-transform:uppercase; color:var(--ink);">
+      <span data-hero-fade="">Est. 2014</span>
+      <span data-hero-fade="">Dubai · UAE</span>
+    </div>
+
+    <div style="margin:auto 0;">
+      <h1 style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; line-height:.92; letter-spacing:0; font-size:clamp(4.2rem,19vw,14.5rem);">
+        <span style="display:block; overflow:hidden;"><span data-hero-line="" style="display:block;">Ted's</span></span>
+        <span style="display:block; overflow:hidden;"><span data-hero-line="" style="display:block;">Lounge</span></span>
+      </h1>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:clamp(20px,4vw,48px); flex-wrap:wrap;">
+      <p data-hero-fade="" style="max-width:36ch; font-size:clamp(14px,1.45vw,18px); color:var(--muted); line-height:1.55;">A modern grooming lounge in the heart of Dubai — precise cuts, hot-towel shaves, and an unhurried ritual built entirely around you.</p>
+      <div data-hero-fade="" style="display:flex; align-items:center; gap:14px;">
+        <a data-wa="" href="https://wa.me/971522175637?text=Hi%20Ted's%20Lounge%2C%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:var(--paper); padding:16px 28px; border-radius:100px; font-family:'Barlow',sans-serif; font-weight:600; font-size:14px; letter-spacing:.01em; text-decoration:none; white-space:nowrap; transition:background .3s ease;">Book on WhatsApp <span style="font-size:16px;">↗</span></a>
+      </div>
+    </div>
+
+    <div aria-hidden="true" style="position:absolute; bottom:clamp(20px,4vh,40px); left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--muted); display:flex; flex-direction:column; align-items:center; gap:8px;">
+      <span>Scroll</span>
+      <span style="display:inline-block; animation:tlBob 1.8s ease-in-out infinite;">↓</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div aria-hidden="true" style="border-top:1px solid rgba(236,234,227,.13); border-bottom:1px solid rgba(236,234,227,.13); overflow:hidden; padding:clamp(14px,2.4vh,22px) 0;">
+    <div data-marquee-track="" style="display:flex; align-items:center; gap:clamp(28px,5vw,56px); width:max-content; font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; letter-spacing:0; font-size:clamp(1.7rem,5.4vw,3.9rem); white-space:nowrap; color:var(--ink);">
+      <span>Skin Fades</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Hot-Towel Shaves</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Beard Sculpting</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Head Massage</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Hair Styling</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Kids' Cuts</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Skin Fades</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Hot-Towel Shaves</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Beard Sculpting</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Head Massage</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Hair Styling</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+      <span>Kids' Cuts</span><span style="color:var(--accent); font-family:'Barlow';">✦</span>
+    </div>
+  </div>
+
+  <!-- STATEMENT -->
+  <section data-statement="" style="padding:clamp(90px,17vh,210px) clamp(18px,6vw,120px);">
+    <div data-reveal="" style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:clamp(28px,5vh,60px);">(01) — The Lounge</div>
+    <p style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.85rem,5.4vw,4.3rem); line-height:1.16; letter-spacing:-.01em; max-width:24ch;">
+      <span data-word="" style="color:#757880;">We</span> <span data-word="" style="color:#757880;">build</span> <span data-word="" style="color:#757880;">sharp,</span> <span data-word="" style="color:#757880;">considered</span> <span data-word="" style="color:#757880;">grooming</span> <span data-word="" style="color:#757880;">for</span> <span data-word="" style="color:#757880;">the</span> <span data-word="" style="color:#757880;">modern</span> <span data-word="" style="color:#757880;">gentleman.</span> <span data-word="" style="color:#757880;">Unhurried.</span> <span data-word="" style="color:#757880;">Precise.</span> <span data-word="" style="color:#757880;">Entirely</span> <span data-word="" style="color:#757880;">yours.</span>
+    </p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="padding:clamp(60px,9vh,110px) clamp(18px,6vw,120px) clamp(80px,12vh,150px); border-top:1px solid rgba(236,234,227,.13);">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:18px; margin-bottom:clamp(36px,6vh,72px);">
+      <div>
+        <div data-reveal="" style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">(02) — Services &amp; Pricing</div>
+        <h2 data-reveal="" style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(3rem,9vw,6.5rem); line-height:.92; letter-spacing:-.01em;">The Menu</h2>
+      </div>
+      <p data-reveal="" style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); max-width:24ch; line-height:1.7;">Walk-ins welcome — booking recommended on weekends.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr)); gap:0; border-top:1px solid rgba(236,234,227,.13);">
+      <div data-reveal="" class="svc-col-hair" style="padding:clamp(28px,4vh,44px) 0 clamp(28px,4vh,44px) 0;">
+        <div style="font-family:'Bevan',serif; text-transform:uppercase; font-size:clamp(1.3rem,2.8vw,1.8rem); color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:0; letter-spacing:.01em;">Hair</div>
+        <div style="font-family:'Barlow',sans-serif; font-size:clamp(13px,1.35vw,15px);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Adult Haircut</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Junior Haircut</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Styling + Wash</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">30 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Smoothing</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">270 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Straightening with Cream</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">100 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Highlight</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">180 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Color</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">100 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Oil Treatment</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Hair Loss Treatment</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">100 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Dandruff Treatment</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">135 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:10px 0;"><span>Keratin Treatment <span style="color:var(--muted); font-size:12px;">(onwards)</span></span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">270 AED</span></div>
+        </div>
+      </div>
+
+      <div data-reveal="" class="svc-col-right" style="padding:clamp(28px,4vh,44px) 0 clamp(28px,4vh,44px) 0;">
+        <div style="font-family:'Bevan',serif; text-transform:uppercase; font-size:clamp(1.3rem,2.8vw,1.8rem); color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:0; letter-spacing:.01em;">Manicure / Pedicure</div>
+        <div style="font-family:'Barlow',sans-serif; font-size:clamp(13px,1.35vw,15px); margin-bottom:clamp(28px,4vh,44px);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Manicure, Pedicure with Scrub</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">120 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Manicure &amp; Pedicure</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">90 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:10px 0;"><span>Foot Spa</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+        </div>
+        <div style="font-family:'Bevan',serif; text-transform:uppercase; font-size:clamp(1.3rem,2.8vw,1.8rem); color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:0; letter-spacing:.01em;">Facial Treatment</div>
+        <div style="font-family:'Barlow',sans-serif; font-size:clamp(13px,1.35vw,15px);">
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Face Cleanup</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">70 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Lotus Facial</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">150 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>D-Tan Face Clean</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Whitening Facial</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">180 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Express Facial</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">90 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0;"><span>Premium Facial</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">180 AED</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; padding:10px 0;"><span>Gold Facial Treatment</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">270 AED</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-reveal="" style="border-top:1px solid rgba(236,234,227,.13); padding-top:clamp(28px,4vh,44px); margin-top:0;">
+      <div style="font-family:'Bevan',serif; text-transform:uppercase; font-size:clamp(1.3rem,2.8vw,1.8rem); color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:10px; margin-bottom:0; letter-spacing:.01em;">Waxing &amp; Threading</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr)); font-family:'Barlow',sans-serif; font-size:clamp(13px,1.35vw,15px);">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Full Body Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">270 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Chest Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">70 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Back Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">70 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Full Face Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">50 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Nose Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">15 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Ear Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">15 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Underarms Wax</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">30 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid rgba(236,234,227,.08); padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Nose Strip</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">20 AED</span></div>
+        <div style="display:flex; justify-content:space-between; align-items:baseline; padding:10px 0; padding-right:clamp(0px,3vw,40px);"><span>Eyebrow Threading</span><span style="font-family:'Space Mono',monospace; font-size:12px; white-space:nowrap; margin-left:16px;">15 AED</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RITUAL (dark) -->
+  <section id="ritual" style="background:#1A1B1F; color:var(--ink); padding:clamp(80px,14vh,170px) clamp(18px,6vw,120px);">
+    <div data-reveal="" style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:18px;">(03) — The Ritual</div>
+    <h2 data-reveal="" style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(2.8rem,8.5vw,6.2rem); line-height:.94; letter-spacing:-.01em; margin-bottom:clamp(44px,7vh,84px);">Four steps.<br>No rush.</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:clamp(28px,4vw,56px);">
+      <div data-reveal="" style="border-top:1px solid rgba(243,239,231,.22); padding-top:20px;"><div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">01</div><h3 style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:10px;">Consultation</h3><p style="font-family:'Barlow',sans-serif; font-size:14px; line-height:1.6; color:rgba(243,239,231,.66);">We talk through the look, your hair, your routine. No assumptions.</p></div>
+      <div data-reveal="" style="border-top:1px solid rgba(243,239,231,.22); padding-top:20px;"><div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">02</div><h3 style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:10px;">The Cut</h3><p style="font-family:'Barlow',sans-serif; font-size:14px; line-height:1.6; color:rgba(243,239,231,.66);">Scissor and clipper work, taken slow and shaped to your head.</p></div>
+      <div data-reveal="" style="border-top:1px solid rgba(243,239,231,.22); padding-top:20px;"><div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">03</div><h3 style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:10px;">Hot Towel</h3><p style="font-family:'Barlow',sans-serif; font-size:14px; line-height:1.6; color:rgba(243,239,231,.66);">Steam, oil and a straight razor for the cleanest finish lines.</p></div>
+      <div data-reveal="" style="border-top:1px solid rgba(243,239,231,.22); padding-top:20px;"><div style="font-family:'Space Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">04</div><h3 style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:10px;">The Finish</h3><p style="font-family:'Barlow',sans-serif; font-size:14px; line-height:1.6; color:rgba(243,239,231,.66);">Style, product and a mirror check. You leave camera-ready.</p></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section data-gallery="" style="overflow:hidden; background:var(--paper);">
+    <div style="height:100vh; display:flex; align-items:center;">
+      <div data-gallery-track="" style="display:flex; align-items:center; gap:clamp(16px,2.5vw,28px); padding:0 clamp(18px,6vw,120px); will-change:transform;">
+        <div style="flex:0 0 auto; width:clamp(320px,85vw,480px);"><div style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:18px;">(04) — Inside</div><h2 style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(2.6rem,7vw,5rem); line-height:1; letter-spacing:-.01em;">Step in.<br>Sit back.<br>Look sharp.</h2><p style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:22px;">Drag · scroll →</p></div>
+        <div data-parallax="" style="flex:0 0 auto; position:relative; width:clamp(260px,78vw,440px); height:clamp(360px,64vh,600px); background:repeating-linear-gradient(45deg,#2E3037 0,#2E3037 14px,#363941 14px,#363941 28px); border-radius:2px; overflow:hidden;"><span style="position:absolute; bottom:16px; left:16px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ECEAE3; background:rgba(20,21,24,.6); padding:5px 10px; border-radius:2px;">[ The Chair ]</span></div>
+        <div data-parallax="" style="flex:0 0 auto; position:relative; width:clamp(260px,78vw,440px); height:clamp(360px,64vh,600px); background:repeating-linear-gradient(45deg,#2E3037 0,#2E3037 14px,#363941 14px,#363941 28px); border-radius:2px; overflow:hidden;"><span style="position:absolute; bottom:16px; left:16px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ECEAE3; background:rgba(20,21,24,.6); padding:5px 10px; border-radius:2px;">[ Fade — 02 ]</span></div>
+        <div data-parallax="" style="flex:0 0 auto; position:relative; width:clamp(260px,78vw,440px); height:clamp(360px,64vh,600px); background:repeating-linear-gradient(45deg,#2E3037 0,#2E3037 14px,#363941 14px,#363941 28px); border-radius:2px; overflow:hidden;"><span style="position:absolute; bottom:16px; left:16px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ECEAE3; background:rgba(20,21,24,.6); padding:5px 10px; border-radius:2px;">[ Hot Towel ]</span></div>
+        <div data-parallax="" style="flex:0 0 auto; position:relative; width:clamp(260px,78vw,440px); height:clamp(360px,64vh,600px); background:repeating-linear-gradient(45deg,#2E3037 0,#2E3037 14px,#363941 14px,#363941 28px); border-radius:2px; overflow:hidden;"><span style="position:absolute; bottom:16px; left:16px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ECEAE3; background:rgba(20,21,24,.6); padding:5px 10px; border-radius:2px;">[ The Detail ]</span></div>
+        <div data-parallax="" style="flex:0 0 auto; position:relative; width:clamp(260px,78vw,440px); height:clamp(360px,64vh,600px); background:repeating-linear-gradient(45deg,#2E3037 0,#2E3037 14px,#363941 14px,#363941 28px); border-radius:2px; overflow:hidden;"><span style="position:absolute; bottom:16px; left:16px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ECEAE3; background:rgba(20,21,24,.6); padding:5px 10px; border-radius:2px;">[ The Lounge ]</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section style="padding:clamp(70px,12vh,140px) clamp(18px,6vw,120px); border-top:1px solid rgba(236,234,227,.13);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); gap:clamp(28px,4vw,48px); text-align:center;">
+      <div data-reveal=""><div style="font-family:'Bevan',serif; font-weight:600; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; letter-spacing:-.02em;"><span data-count="12">12</span></div><div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:10px;">Years open</div></div>
+      <div data-reveal=""><div style="font-family:'Bevan',serif; font-weight:600; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; letter-spacing:-.02em;"><span data-count="9">9</span></div><div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:10px;">Master barbers</div></div>
+      <div data-reveal=""><div style="font-family:'Bevan',serif; font-weight:600; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; letter-spacing:-.02em;"><span data-count="24000">24,000</span></div><div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:10px;">Cuts &amp; counting</div></div>
+      <div data-reveal=""><div style="font-family:'Bevan',serif; font-weight:600; font-size:clamp(2.2rem,5.5vw,4rem); line-height:1; letter-spacing:-.02em;"><span data-count="4.9" data-dec="1">4.9</span></div><div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:10px;">Google rating</div></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section style="padding:clamp(80px,15vh,190px) clamp(18px,6vw,120px); border-top:1px solid rgba(236,234,227,.13); text-align:center;">
+    <div data-reveal="" style="font-family:'Bevan',serif; color:var(--accent); font-size:clamp(4rem,10vw,7rem); line-height:.5; margin-bottom:10px;">&ldquo;</div>
+    <blockquote cite="https://g.co/kgs/tedslounge" data-reveal="" style="font-family:'Bevan',serif; font-weight:500; font-size:clamp(1.7rem,5vw,3.6rem); line-height:1.22; letter-spacing:-.01em; max-width:18ch; margin:0 auto;">Best grooming in Dubai. The hot-towel shave alone is worth the trip.</blockquote>
+    <div data-reveal="" style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin-top:clamp(28px,4vh,44px);">A. Rahman · Regular since 2019</div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" style="background:#1A1B1F; color:var(--ink); padding:clamp(80px,14vh,170px) clamp(18px,6vw,120px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:clamp(40px,6vw,90px); align-items:start;">
+      <div>
+        <div data-reveal="" style="font-family:'Space Mono',monospace; font-size:clamp(11px,1.2vw,13px); letter-spacing:.22em; text-transform:uppercase; color:var(--accent); margin-bottom:18px;">(05) — Visit</div>
+        <h2 data-reveal="" style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(3rem,9vw,6rem); line-height:.92; letter-spacing:-.01em; margin-bottom:clamp(36px,5vh,56px);">Come<br>through.</h2>
+        <div data-reveal="" style="display:flex; flex-direction:column; gap:18px; font-family:'Barlow',sans-serif; font-size:15px;">
+          <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(243,239,231,.2); padding-top:14px;"><span style="color:rgba(243,239,231,.6);">Mon – Thu</span><span>10:00 – 22:00</span></div>
+          <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(243,239,231,.2); padding-top:14px;"><span style="color:rgba(243,239,231,.6);">Friday</span><span>14:00 – 23:00</span></div>
+          <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(243,239,231,.2); padding-top:14px;"><span style="color:rgba(243,239,231,.6);">Sat – Sun</span><span>10:00 – 23:00</span></div>
+          <div style="display:flex; justify-content:space-between; border-top:1px solid rgba(243,239,231,.2); border-bottom:1px solid rgba(243,239,231,.2); padding:14px 0;"><span style="color:rgba(243,239,231,.6);">Where</span><span>JLT · DMCC · Dubai</span></div>
+        </div>
+      </div>
+      <div data-reveal="" style="display:flex; flex-direction:column; gap:18px;">
+        <a data-wa="" href="https://wa.me/971522175637?text=Hi%20Ted's%20Lounge%2C%20I'd%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener" style="display:block; background:var(--accent); color:#1C1815; border-radius:6px; padding:clamp(26px,4vw,40px); text-decoration:none; transition:transform .3s ease;">
+          <div style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:#3D0E10;">Book in seconds</div>
+          <div style="font-family:'Bevan',serif; font-weight:600; font-size:clamp(2rem,5vw,3rem); line-height:1.05; margin-top:10px;">WhatsApp us ↗</div>
+          <div data-phone="" style="font-family:'Barlow',sans-serif; font-weight:600; font-size:16px; margin-top:14px;">+971 52 217 5637</div>
+        </a>
+        <a data-email="" data-email-text="" href="mailto:tedslounge@gmail.com" style="display:flex; justify-content:space-between; align-items:center; border:1px solid rgba(243,239,231,.24); border-radius:6px; padding:20px clamp(20px,3vw,28px); color:var(--paper); text-decoration:none; font-family:'Barlow',sans-serif; font-size:15px; transition:border-color .3s ease;">tedslounge@gmail.com</a>
+        <a href="https://www.google.com/maps/place/Ted%27s+Gents+Lounge" target="_blank" rel="noopener" style="display:block; position:relative; height:clamp(200px,30vh,280px); border-radius:6px; overflow:hidden; border:1px solid rgba(243,239,231,.18);">
+          <iframe title="Ted's Gents Lounge on Google Maps" src="https://www.google.com/maps?q=Ted%27s+Gents+Lounge,+Dubai&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%; height:100%; border:0; filter:grayscale(1) contrast(1.05) brightness(.92); pointer-events:none;"></iframe>
+          <span style="position:absolute; top:14px; left:14px; font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#1C1815; background:var(--accent); padding:7px 12px; border-radius:100px; font-weight:700;">Open in Maps ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--paper); color:var(--ink); padding:clamp(50px,8vh,90px) clamp(18px,6vw,120px) clamp(30px,5vh,50px);">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:30px;">
+      <div class="footer-brand" style="display:flex; align-items:center; gap:clamp(14px,2vw,26px);"><img src="./logo.png" alt="Ted's Lounge" style="width:clamp(58px,8vw,96px); height:clamp(58px,8vw,96px); border-radius:50%; object-fit:cover; flex:0 0 auto;"><span style="font-family:'Bevan',serif; font-weight:400; text-transform:uppercase; font-size:clamp(3rem,12vw,8rem); line-height:.85; letter-spacing:-.01em;">Ted's Lounge</span></div>
+      <div class="footer-links" style="display:flex; gap:clamp(24px,5vw,60px); flex-wrap:wrap; font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;">
+        <a href="#services" style="color:var(--ink); text-decoration:none;">Services</a>
+        <a href="#visit" style="color:var(--ink); text-decoration:none;">Visit</a>
+        <a href="https://www.instagram.com/tedslounge_dubai/" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:none;">Instagram</a>
+        <a data-wa="" href="https://wa.me/971522175637" target="_blank" rel="noopener" style="color:var(--ink); text-decoration:none;">WhatsApp</a>
+      </div>
+    </div>
+    <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:clamp(40px,6vh,70px); padding-top:22px; border-top:1px solid rgba(236,234,227,.13); font-family:'Space Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);">
+      <span>&copy; 2026 Ted's Lounge &middot; Dubai</span>
+      <span>Gentlemen's Grooming</span>
+    </div>
+  </footer>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 430, &quot;height&quot;: 932}, &quot;accent&quot;: {&quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#D81F26&quot;, &quot;options&quot;: [&quot;#D81F26&quot;, &quot;#17181B&quot;, &quot;#A8181E&quot;, &quot;#C7CBD1&quot;]}, &quot;whatsappNumber&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;971522175637&quot;}, &quot;email&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;tedslounge@gmail.com&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { setRoot: (el) => { if (el) this.root = el; } };
+  }
+
+  componentDidMount() {
+    this.applyProps();
+    this._tries = 0;
+    this._init = () => {
+      if (window.gsap && window.ScrollTrigger) { this.setup(); return; }
+      if (this._tries++ > 120) return;
+      this._t = setTimeout(this._init, 50);
+    };
+    this._init();
+  }
+
+  componentDidUpdate() { this.applyProps(); if (window.ScrollTrigger) window.ScrollTrigger.refresh(); }
+
+  componentWillUnmount() {
+    clearTimeout(this._t);
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+    if (this.ctx) this.ctx.revert();
+  }
+
+  applyProps() {
+    if (!this.root) return;
+    const accent = this.props.accent || '#D81F26';
+    this.root.style.setProperty('--accent', accent);
+    const num = String(this.props.whatsappNumber || '971522175637').replace(/\D/g, '');
+    const link = 'https://wa.me/' + num + '?text=' + encodeURIComponent("Hi Ted's Lounge, I'd like to book an appointment.");
+    this.root.querySelectorAll('[data-wa]').forEach((a) => a.setAttribute('href', link));
+    this.root.querySelectorAll('[data-phone]').forEach((p) => { p.textContent = '+' + num; });
+    const email = this.props.email || 'tedslounge@gmail.com';
+    this.root.querySelectorAll('[data-email]').forEach((a) => {
+      a.setAttribute('href', 'mailto:' + email);
+      if (a.hasAttribute('data-email-text')) a.textContent = email;
+    });
+  }
+
+  setup() {
+    const g = window.gsap, ST = window.ScrollTrigger;
+    g.registerPlugin(ST);
+    const root = this.root;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      root.querySelectorAll('[data-hero-line],[data-hero-fade],[data-reveal],[data-word],[data-srow]').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.color = '';
+      });
+      const nav = root.querySelector('[data-nav]');
+      if (nav) {
+        this._onScroll = () => {
+          const sc = window.scrollY || document.documentElement.scrollTop || 0;
+          if (sc > 40) {
+            nav.style.background = 'rgba(28,29,34,.85)';
+            nav.style.backdropFilter = 'blur(12px)';
+            nav.style.webkitBackdropFilter = 'blur(12px)';
+            nav.style.borderBottomColor = 'rgba(236,234,227,.1)';
+          } else {
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.webkitBackdropFilter = 'none';
+            nav.style.borderBottomColor = 'transparent';
+          }
+        };
+        window.addEventListener('scroll', this._onScroll, { passive: true });
+        this._onScroll();
+      }
+      return;
+    }
+
+    this.ctx = g.context(() => {
+      g.from('[data-hero-line]', { yPercent: 120, duration: 1.15, ease: 'power4.out', stagger: 0.12, delay: 0.15 });
+      g.from('[data-hero-fade]', { opacity: 0, y: 18, duration: 1, ease: 'power3.out', stagger: 0.09, delay: 0.5 });
+      g.utils.toArray('[data-marquee-track]').forEach((t) => {
+        g.to(t, { xPercent: -50, repeat: -1, duration: 22, ease: 'none' });
+      });
+      g.utils.toArray('[data-reveal]').forEach((el) => {
+        g.from(el, { y: 42, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+      const words = g.utils.toArray('[data-word]');
+      if (words.length) {
+        g.to(words, { color: '#ECEAE3', ease: 'none', stagger: 1,
+          scrollTrigger: { trigger: '[data-statement]', start: 'top 72%', end: 'bottom 62%', scrub: true } });
+      }
+      const track = root.querySelector('[data-gallery-track]');
+      const gallery = root.querySelector('[data-gallery]');
+      if (track && gallery) {
+        const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 40);
+        g.to(track, { x: () => -dist(), ease: 'none',
+          scrollTrigger: { trigger: gallery, start: 'top top', end: () => '+=' + (dist() + 200),
+            pin: true, scrub: 1, invalidateOnRefresh: true, anticipatePin: 1 } });
+      }
+      g.utils.toArray('[data-count]').forEach((el) => {
+        const end = parseFloat(el.getAttribute('data-count'));
+        const dec = el.getAttribute('data-dec') === '1';
+        const o = { v: 0 };
+        g.to(o, { v: end, duration: 2, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' },
+          onUpdate: () => { el.textContent = dec ? o.v.toFixed(1) : Math.round(o.v).toLocaleString(); } });
+      });
+      g.utils.toArray('[data-parallax]').forEach((el) => {
+        g.to(el, { yPercent: -10, ease: 'none',
+          scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true } });
+      });
+      const nav = root.querySelector('[data-nav]');
+      if (nav) {
+        this._onScroll = () => {
+          const sc = window.scrollY || document.documentElement.scrollTop || 0;
+          if (sc > 40) {
+            nav.style.background = 'rgba(28,29,34,.85)';
+            nav.style.backdropFilter = 'blur(12px)';
+            nav.style.webkitBackdropFilter = 'blur(12px)';
+            nav.style.borderBottomColor = 'rgba(236,234,227,.1)';
+          } else {
+            nav.style.background = 'transparent';
+            nav.style.backdropFilter = 'none';
+            nav.style.webkitBackdropFilter = 'none';
+            nav.style.borderBottomColor = 'transparent';
+          }
+        };
+        window.addEventListener('scroll', this._onScroll, { passive: true });
+        this._onScroll();
+      }
+    }, root);
+
+    setTimeout(() => ST.refresh(), 450);
+    window.addEventListener('load', () => ST.refresh());
+  }
+}
+</script>
+</body>
+</html>
