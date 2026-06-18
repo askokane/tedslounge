@@ -75,6 +75,11 @@
   [data-srow]:hover span { color:#fff; }
   /* ── Gallery card 3D ── */
   [data-parallax] { transform-style:preserve-3d; }
+  /* ── Footer nav link hover ── */
+  .footer-links a { position:relative; transition:color .2s ease; }
+  .footer-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width .26s cubic-bezier(.2,1,.4,1); }
+  .footer-links a:hover { color:var(--accent) !important; }
+  .footer-links a:hover::after { width:100%; }
 </style>
 </helmet>
 <div class="tl-cursor" aria-hidden="true"></div>
@@ -525,6 +530,19 @@ class Component extends DCLogic {
         });
         btn.addEventListener('mouseleave', () => {
           g.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.5)' });
+        });
+      });
+
+      // ── Magnetic footer nav links (gentler pull) ──────────────────────
+      root.querySelectorAll('.footer-links a').forEach(btn => {
+        btn.addEventListener('mousemove', e => {
+          const r = btn.getBoundingClientRect();
+          const dx = (e.clientX - r.left - r.width  / 2) * 0.1;
+          const dy = (e.clientY - r.top  - r.height / 2) * 0.1;
+          g.to(btn, { x: dx, y: dy, duration: 0.3, ease: 'power2.out', overwrite: 'auto' });
+        });
+        btn.addEventListener('mouseleave', () => {
+          g.to(btn, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1,0.4)' });
         });
       });
 
