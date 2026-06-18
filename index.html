@@ -68,8 +68,14 @@
   body:hover .tl-cursor { transform:translate(-50%,-50%) scale(1); }
   .tl-cursor.big { transform:translate(-50%,-50%) scale(3.5); }
   /* ── Service row hover ── */
-  [data-srow] { transition:background .18s ease, padding-left .18s ease; border-radius:2px; }
-  [data-srow]:hover { background:rgba(236,234,227,.04); padding-left:6px; }
+  [data-srow] { position:relative; transition:background .2s ease, padding-left .22s cubic-bezier(.2,1,.4,1); border-radius:2px; }
+  [data-srow]::before { content:''; position:absolute; left:0; top:16%; height:68%; width:2px; background:var(--accent); border-radius:1px; transform:scaleY(0); transform-origin:center; transition:transform .26s cubic-bezier(.2,1,.4,1); }
+  [data-srow] span { transition:color .2s ease; }
+  [data-srow] span:last-child { display:inline-block; transition:color .2s ease, transform .2s cubic-bezier(.2,1,.4,1); }
+  [data-srow]:hover { background:rgba(236,234,227,.055); padding-left:12px; }
+  [data-srow]:hover::before { transform:scaleY(1); }
+  [data-srow]:hover span:first-child { color:#fff; }
+  [data-srow]:hover span:last-child { color:var(--accent); transform:translateX(3px); }
   /* ── Gallery card 3D ── */
   [data-parallax] { transform-style:preserve-3d; }
 </style>
